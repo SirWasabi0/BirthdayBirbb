@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Birthday Letter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: url('./jurybirb.png') no-repeat center center/cover;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      overflow: hidden;
+    }
+    .card {
+      padding: 30px;
+      border-radius: 20px;
+      max-width: 700px;
+      text-align: left;
+      background: rgba(255,255,255,0.4);
+      backdrop-filter: blur(8px);
+    }
+    #typedLetter {
+      white-space: pre-wrap;
+      font-size: 18px;
+      padding: 20px;
+      background: rgba(255,255,255,0.6);
+      border-radius: 15px;
+      color: black;
+      max-height: 90vh;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div id="typedLetter"></div>
+  </div>
+
+  <script>
+  const letterText = `Happy Birthday Lil Jury,
+
+Remember when I joined the guild last August? And you said, "owo girl? omg new friend" and I was so surprised because of how welcoming your were, for a second I didn't even take you seriously but then slowly I did, you always showed up with the same enthusiasm and the same giddy joy and it fills me with so much warmth.
+
+Spending the past few months with you made me realise how I would never want to lose a friend like you throughout my life, how I'd like to call you wifey even if you become somebody's wife someday just to annoy him (assert dominance) and to remind myself of how grateful I am to have a friend like you.
+
+This year we thought through many things together (actually even last year) but this year... we argued, we made oppsies that hurt each other, we spent some time apart and we also just ran back to each other and god knows how badly I missed you in that time away from you. You've become an important aspect of my day, not a day goes by where I don't wonder "how are my gorls?" Or "I wonder what birb is upto" and our bond became stronger by the passing days because we experienced situations that could literally break us but it just taught us more about each other and about ourselves.
+
+I yapped, I'm reminiscing. I just want you to know that I'll always love you. You're bright, you're so capable, you're wonderful, you're smart, you're beautiful and you're my best friend and the world wasn't ready for such a DIVA omg 20??? Insane. You've made me believe and trust that honesty and true love exists.
+
+Happiest 20th birthday sweetheart. Platonic wifey. I love you.
+
+Rene (sapty)`;
+
+  let index = 0;
+  const speed = 30;
+
+  function typeLetter() {
+    if (index < letterText.length) {
+      document.getElementById('typedLetter').innerHTML += letterText.charAt(index);
+      index++;
+      setTimeout(typeLetter, speed);
+    }
+  }
+
+  window.onload = () => {
+    typeLetter();
+  };
+  </script>
+</body>
+</html>
