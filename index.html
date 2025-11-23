@@ -4,45 +4,54 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Birthday Letter</title>
+
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: url('./jurybirb.png') no-repeat center center/cover;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
+      font-family: "Comic Sans MS", "Comic Sans", cursive;
+      background: url('jurybirb.png') no-repeat center center/cover;
       margin: 0;
-      overflow: hidden;
-    }
-    .card {
-      padding: 30px;
-      border-radius: 20px;
-      max-width: 700px;
-      text-align: left;
-      background: rgba(255,255,255,0.4);
-      backdrop-filter: blur(8px);
-    }
-    #typedLetter {
-      white-space: pre-wrap;
-      font-size: 18px;
       padding: 20px;
-      background: rgba(255,255,255,0.6);
-      border-radius: 15px;
+      
+      /* allow scrolling on mobile */
+      overflow-y: auto;
+
+      /* desktop centering */
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+    }
+
+    #typedLetter {
       color: black;
-      max-height: 90vh;
-      overflow: hidden;
+      font-size: 20px;
+      white-space: pre-wrap;
+      max-width: 800px;
+
+      /* transparent bubble */
+      background: rgba(255, 255, 255, 0.20);
+      backdrop-filter: blur(3px);
+      padding: 25px;
+      border-radius: 15px;
+
+      margin-top: 40px; /* keeps bubble away from top on PC and mobile */
+    }
+
+    /* Make text bubble readable on mobile */
+    @media (max-width: 600px) {
+      #typedLetter {
+        font-size: 17px;
+        padding: 20px;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="card">
-    <div id="typedLetter"></div>
-  </div>
 
-  <script>
-  const letterText = `Happy Birthday Lil Jury,
+  <div id="typedLetter"></div>
+
+<script>
+const letterText = `Happy Birthday Lil Jury,
 
 Remember when I joined the guild last August? And you said, "owo girl? omg new friend" and I was so surprised because of how welcoming your were, for a second I didn't even take you seriously but then slowly I did, you always showed up with the same enthusiasm and the same giddy joy and it fills me with so much warmth.
 
@@ -56,20 +65,21 @@ Happiest 20th birthday sweetheart. Platonic wifey. I love you.
 
 Rene (sapty)`;
 
-  let index = 0;
-  const speed = 30;
+let index = 0;
+const speed = 30;
 
-  function typeLetter() {
-    if (index < letterText.length) {
-      document.getElementById('typedLetter').innerHTML += letterText.charAt(index);
-      index++;
-      setTimeout(typeLetter, speed);
-    }
+function typeLetter() {
+  if (index < letterText.length) {
+    document.getElementById("typedLetter").innerHTML += letterText.charAt(index);
+    index++;
+    setTimeout(typeLetter, speed);
   }
+}
 
-  window.onload = () => {
-    typeLetter();
-  };
-  </script>
+window.onload = typeLetter;
+</script>
+
 </body>
 </html>
+
+
